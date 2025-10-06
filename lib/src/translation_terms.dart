@@ -5,12 +5,11 @@ import 'package:translations_cleaner/src/models/term.dart';
 import 'package:glob/glob.dart';
 import 'package:glob/list_local_fs.dart';
 
-/// Iterate through all files ending in `*.arb` and extract all the translation
+/// Iterate through all files ending in `*.arb` in `arbDir` and extract all the translation
 /// terms being used.
 ///
-Set<Term> getTranslationTerms() {
-  final path = Directory.current.path;
-  final arbFile = Glob("$path/**.arb");
+Set<Term> getTranslationTerms(String arbDir) {
+  final arbFile = Glob("$arbDir/**.arb");
   final arbFiles = arbFile.listSync(followLinks: false);
 
   final arbTerms = <Term>{};
