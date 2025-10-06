@@ -39,7 +39,8 @@ String _sortContent(String contents, int indent) {
   final sortedEntries = decoded.entries.toList()..sort((a, b) => arbKeyComparator(a.key, b.key));
   final sortedMap = LinkedHashMap<String, dynamic>.fromEntries(sortedEntries);
 
-  return encoder.convert(sortedMap);
+  final result = encoder.convert(sortedMap);
+  return result.endsWith('\n') ? result : '$result\n';
 }
 
 /// Comparator implementing ARB-friendly ordering:
