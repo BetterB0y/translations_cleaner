@@ -7,7 +7,7 @@ import 'package:translations_cleaner/src/translation_dir.dart';
 import 'package:translations_cleaner/src/translation_files.dart';
 
 Future<void> sortTerms(ArgResults? argResults) async {
-  final int indent = int.tryParse(argResults?['indent']) ?? 2;
+  final int indent = int.tryParse(argResults?['indent'] ?? "") ?? 2;
 
   final arbDir = getTranslationDir();
   final files = translationFiles(arbDir);
