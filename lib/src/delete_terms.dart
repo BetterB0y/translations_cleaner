@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:translations_cleaner/src/export_unused_terms.dart';
 import 'package:translations_cleaner/src/models/term.dart';
+import 'package:translations_cleaner/src/translation_dir.dart';
 import 'package:translations_cleaner/src/translation_files.dart';
 import 'package:translations_cleaner/src/unused_terms.dart';
 
@@ -12,7 +13,8 @@ Future<void> deleteTerms(ArgResults? argResults) async {
   final bool exportTerms = argResults?['export'];
   final String? outputPath = argResults?['output-path'];
 
-  final files = translationFiles();
+  final arbDir = getTranslationDir();
+  final files = translationFiles(arbDir);
   final terms = findUnusedTerms();
 
   if (terms.isNotEmpty && exportTerms) {

@@ -19,8 +19,7 @@ class Term {
       return false;
     }
     final otherTerm = other;
-    return otherTerm.key == key &&
-        otherTerm.additionalAttributes == additionalAttributes;
+    return otherTerm.key == key && otherTerm.additionalAttributes == additionalAttributes;
   }
 
   @override
@@ -28,4 +27,7 @@ class Term {
     _hashcode ??= key.hashCode;
     return _hashcode!;
   }
+
+  @override
+  String toString() => 'Term(key: $key, additionalAttributes: $additionalAttributes)';
 }
