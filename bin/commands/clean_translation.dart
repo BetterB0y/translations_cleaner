@@ -12,11 +12,14 @@ class CleanTranslation extends Command {
         help: 'Save unused keys as a .txt file'
             'in the path provided',
         abbr: 'e');
+    argParser.addOption('indent',
+        help: 'Indent the output JSON files, '
+            'default is 2 spaces',
+        abbr: 'i');
   }
 
   @override
-  String get description =>
-      'Search all the translations listed in arb files and '
+  String get description => 'Search all the translations listed in arb files and '
       'delete the unused translations';
 
   @override

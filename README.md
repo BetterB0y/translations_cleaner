@@ -34,6 +34,7 @@ Available for `clean-translations`
 
 - `-o, --output-path` - Path for saving exported file, defaults to root path of the folder
 - `-e, --[no-]export ` - Save unused keys as a .txt file in the path provided
+- `-i, --indent` - Indent the output JSON files, default is 2 spaces
 
 Available for `list-unused-terms`
 
