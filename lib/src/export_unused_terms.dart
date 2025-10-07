@@ -8,7 +8,7 @@ void exportUnusedTerms(Set<Term> notUsed, String? outputPath) {
   }
 
   outputPath ??= Directory.current.path;
-  var file = File('$outputPath/unused-translations.txt');
+  final file = File('$outputPath/unused-translations.txt');
   final buffer = StringBuffer();
   buffer.writeAll(notUsed.map((e) => '${e.key}\n'));
   file.writeAsString(buffer.toString());
