@@ -7,22 +7,22 @@ void main() {
   });
 
   test("when both starts with @@, should compare by base", () {
-    final keyA = "@@a";
-    final keyB = "@@b";
+    const keyA = "@@a";
+    const keyB = "@@b";
     expect(arbKeyComparator(keyA, keyB), -1);
     expect(arbKeyComparator(keyB, keyA), 1);
   });
 
   test("when one key starts with @@, should be first", () {
-    final keyA = "@@a";
-    final keyB = "@b";
+    const keyA = "@@a";
+    const keyB = "@b";
     expect(arbKeyComparator(keyA, keyB), -1);
     expect(arbKeyComparator(keyB, keyA), 1);
   });
 
   test("when key and its metadata, should sort key first and metadata then", () {
-    final key = "a";
-    final metadata = "@a";
+    const key = "a";
+    const metadata = "@a";
     expect(arbKeyComparator(key, metadata), -1);
     expect(arbKeyComparator(metadata, key), 1);
   });
@@ -38,15 +38,15 @@ void main() {
   });
 
   test("when two metadata, should sort by base key", () {
-    final keyA = "@a";
-    final keyB = "@b";
+    const keyA = "@a";
+    const keyB = "@b";
     expect(arbKeyComparator(keyA, keyB), -1);
     expect(arbKeyComparator(keyB, keyA), 1);
   });
 
   test("when two keys, should compare them", () {
-    final keyA = "a";
-    final keyB = "b";
+    const keyA = "a";
+    const keyB = "b";
     expect(arbKeyComparator(keyA, keyB), -1);
     expect(arbKeyComparator(keyB, keyA), 1);
   });

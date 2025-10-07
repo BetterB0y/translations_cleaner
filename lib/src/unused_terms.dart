@@ -14,7 +14,7 @@ Set<Term> findUnusedTerms() {
   print('FETCHING ALL THE DART FILES TO LOOK THROUGH 🏗');
   final dartFiles = getDartFiles(arbDir);
   print('LOOKING THROUGH FILES TO FIND UNUSED TERMS 👀');
-  final unusedTerms = Set<Term>.from(terms);
+  final unusedTerms = Set<Term>.of(terms);
 
   for (final file in dartFiles) {
     final content = File(file.path).readAsStringSync();

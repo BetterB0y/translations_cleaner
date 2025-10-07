@@ -4,18 +4,24 @@ import 'package:translations_cleaner/src/delete_terms.dart';
 /// Command for cleaning the translation files from all the unused translations
 class CleanTranslation extends Command {
   CleanTranslation() {
-    argParser.addOption('output-path',
-        abbr: 'o',
-        help: 'Path for saving exported '
-            'file, defaults to root path of the folder');
-    argParser.addFlag('export',
-        help: 'Save unused keys as a .txt file'
-            'in the path provided',
-        abbr: 'e');
-    argParser.addOption('indent',
-        help: 'Indent the output JSON files, '
-            'default is 2 spaces',
-        abbr: 'i');
+    argParser.addOption(
+      'output-path',
+      abbr: 'o',
+      help: 'Path for saving exported '
+          'file, defaults to root path of the folder',
+    );
+    argParser.addFlag(
+      'export',
+      help: 'Save unused keys as a .txt file'
+          'in the path provided',
+      abbr: 'e',
+    );
+    argParser.addOption(
+      'indent',
+      help: 'Indent the output JSON files, '
+          'default is 2 spaces',
+      abbr: 'i',
+    );
   }
 
   @override

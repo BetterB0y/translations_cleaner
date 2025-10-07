@@ -26,16 +26,18 @@ Future<void> deleteTerms(ArgResults? argResults) async {
 }
 
 Future<void> _deleteTermsForFile(
-    FileSystemEntity arbFile, Set<Term> terms, int indent) async {
+  FileSystemEntity arbFile,
+  Set<Term> terms,
+  int indent,
+) async {
   final fileString = await File(arbFile.path).readAsString();
   final Map<String, dynamic> fileJson = jsonDecode(fileString);
-  for (var term in terms) {
+  for (final term in terms) {
     fileJson.remove(term.key);
     if (term.additionalAttributes) {
       fileJson.remove('@${term.key}');
     }
   }
   // Indent is being used for proper formatting
-  await File(arbFile.path)
-      .writeAsString(JsonEncoder.withIndent(' ' * indent).convert(fileJson));
+  await File(arbFile.path).writeAsString(JsonEncoder.withIndent(' ' * indent).convert(fileJson));
 }
