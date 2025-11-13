@@ -18,11 +18,11 @@ Set<Term> findUnusedTerms() {
 
   for (final file in dartFiles) {
     final content = File(file.path).readAsStringSync();
-    for (final arb in terms) {
-      if (content.contains(arb.key)) {
-        unusedTerms.remove(arb);
-      }
-    }
+
+    unusedTerms.removeWhere(
+      (arb) => RegExp("\\b${arb.key}\\b").hasMatch(content),
+    );
   }
+
   return unusedTerms;
 }
