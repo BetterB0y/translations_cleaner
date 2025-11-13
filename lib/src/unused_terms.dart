@@ -26,7 +26,7 @@ Set<Term> findUnusedTerms() {
     final content = File(file.path).readAsStringSync();
 
     unusedTerms.removeWhere(
-      (arb) => termRegexes[arb]!.hasMatch(content),
+      (arb) => termRegexes[arb]?.hasMatch(content) == true,
     );
   }
 
