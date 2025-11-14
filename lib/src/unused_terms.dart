@@ -16,13 +16,19 @@ Set<Term> findUnusedTerms() {
   print('LOOKING THROUGH FILES TO FIND UNUSED TERMS 👀');
   final unusedTerms = Set<Term>.of(terms);
 
+  final termRegexes = {
+    for (final arb in terms) arb: RegExp("\\b${arb.key}\\b"),
+  };
+
   for (final file in dartFiles) {
+    if (unusedTerms.isEmpty) break;
+
     final content = File(file.path).readAsStringSync();
-    for (final arb in terms) {
-      if (content.contains(arb.key)) {
-        unusedTerms.remove(arb);
-      }
-    }
+
+    unusedTerms.removeWhere(
+      (arb) => termRegexes[arb]?.hasMatch(content) == true,
+    );
   }
+
   return unusedTerms;
 }
