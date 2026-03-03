@@ -17,7 +17,7 @@ Set<Term> findUnusedTerms() {
   final unusedTerms = Set<Term>.of(terms);
 
   final termRegexes = {
-    for (final arb in terms) arb: RegExp("\\b${arb.key}\\b"),
+    for (final arb in terms) arb: RegExp("\\b\\.${arb.key}\\b"),
   };
 
   for (final file in dartFiles) {
