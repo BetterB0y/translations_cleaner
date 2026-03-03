@@ -22,7 +22,7 @@ class CleanTranslation extends Command {
           'default is 2 spaces',
       abbr: 'i',
     );
-    argParser.addFlag(
+    argParser.addOption(
       'prefix',
       abbr: 'p',
       help: 'Prefix used when accessing intl translations, e.g. AppLocalizations. If your project uses'

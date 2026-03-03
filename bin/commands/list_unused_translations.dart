@@ -23,7 +23,7 @@ class ListUnusedTranslations extends Command {
       help: 'Abort execution if unused translations are found. This can be helpful in CI, if you '
           'don\'t want to proceed if a build should fail',
     );
-    argParser.addFlag(
+    argParser.addOption(
       'prefix',
       abbr: 'p',
       help: 'Prefix used when accessing intl translations, e.g. AppLocalizations. If your project uses'
