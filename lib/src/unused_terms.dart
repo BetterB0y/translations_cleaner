@@ -7,7 +7,7 @@ import 'package:translations_cleaner/src/translation_terms.dart';
 
 /// Searches through all `*.arb` files in `arbDir` to check which translation terms
 /// have not been used.
-Set<Term> findUnusedTerms() {
+Set<Term> findUnusedTerms(String prefix) {
   print('FETCHING ALL THE TRANSLATION TERMS 🌏');
   final arbDir = getTranslationDir();
   final terms = getTranslationTerms(arbDir);
@@ -16,8 +16,10 @@ Set<Term> findUnusedTerms() {
   print('LOOKING THROUGH FILES TO FIND UNUSED TERMS 👀');
   final unusedTerms = Set<Term>.of(terms);
 
+  final formattedPrefix = prefix.endsWith(".") ? prefix : "$prefix.";
+
   final termRegexes = {
-    for (final arb in terms) arb: RegExp("\\b${arb.key}\\b"),
+    for (final arb in terms) arb: RegExp("\\b$formattedPrefix${arb.key}\\b"),
   };
 
   for (final file in dartFiles) {

@@ -10,21 +10,24 @@ class ListUnusedTranslations extends Command {
     argParser.addOption(
       'output-path',
       abbr: 'o',
-      help: 'Path for saving exported '
-          'file, defaults to root path of the folder',
+      help: 'Path for saving exported file, defaults to root path of the folder',
     );
     argParser.addFlag(
       'export',
-      help: 'Save unused keys as a .txt file'
-          'in the path provided',
+      help: 'Save unused keys as a .txt file in the path provided',
       abbr: 'e',
     );
     argParser.addFlag(
       'abort-on-unused',
       abbr: 'a',
-      help: 'Abort execution if '
-          'unused translations are found. This can be helpful in CI, if you '
+      help: 'Abort execution if unused translations are found. This can be helpful in CI, if you '
           'don\'t want to proceed if a build should fail',
+    );
+    argParser.addFlag(
+      'prefix',
+      abbr: 'p',
+      help: 'Prefix used when accessing intl translations, e.g. AppLocalizations. If your project uses'
+          'a different prefix, you can set it here to make sure the tool finds all the translations',
     );
   }
 
@@ -40,7 +43,8 @@ class ListUnusedTranslations extends Command {
     final bool abort = argResults?['abort-on-unused'];
     final bool exportTerms = argResults?['export'];
     final String? outputPath = argResults?['output-path'];
-    final notUsed = findUnusedTerms();
+    final String prefix = argResults?['prefix'] ?? "";
+    final notUsed = findUnusedTerms(prefix);
     if (notUsed.isNotEmpty && abort) {
       print('❌ ${notUsed.length} unused translations found, aborting ❌');
       exitCode = 1;

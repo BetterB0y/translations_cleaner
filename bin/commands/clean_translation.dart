@@ -22,6 +22,12 @@ class CleanTranslation extends Command {
           'default is 2 spaces',
       abbr: 'i',
     );
+    argParser.addFlag(
+      'prefix',
+      abbr: 'p',
+      help: 'Prefix used when accessing intl translations, e.g. AppLocalizations. If your project uses'
+          'a different prefix, you can set it here to make sure the tool finds all the translations',
+    );
   }
 
   @override
