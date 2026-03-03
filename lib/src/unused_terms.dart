@@ -16,10 +16,9 @@ Set<Term> findUnusedTerms(String prefix) {
   print('LOOKING THROUGH FILES TO FIND UNUSED TERMS 👀');
   final unusedTerms = Set<Term>.of(terms);
 
-  final formattedPrefix = prefix.endsWith(".") ? prefix : "$prefix.";
 
   final termRegexes = {
-    for (final arb in terms) arb: RegExp("\\b$formattedPrefix${arb.key}\\b"),
+    for (final arb in terms) arb: RegExp("\\b.${arb.key}\\b"),
   };
 
   for (final file in dartFiles) {
