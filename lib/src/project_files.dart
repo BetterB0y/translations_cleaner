@@ -13,8 +13,10 @@ List<FileSystemEntity> getDartFiles(String arbDir) {
   final outputLocalizationFile = getOutputLocalizationFileName().replaceFirst(RegExp(r'\.dart$'), '');
 
   for (final entity in dartFile.listSync(followLinks: false)) {
-    print("File: ${entity.path}");
-    if (entity.path.contains("$arbDir/$outputLocalizationFile")) continue;
+    if (entity.path.contains("$arbDir/$outputLocalizationFile")) {
+      print("File: ${entity.path} continue");
+      continue;
+    }
     dartFiles.add(entity);
   }
 
